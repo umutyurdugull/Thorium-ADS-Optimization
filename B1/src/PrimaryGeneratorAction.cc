@@ -18,19 +18,19 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   G4int n_particle = 1;
   fParticleGun = new G4ParticleGun(n_particle);
 
-  // Parçacık Tablosundan Protonu Bul
+  
   G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
   G4ParticleDefinition* particle = particleTable->FindParticle("proton");
   
   fParticleGun->SetParticleDefinition(particle);
   
-  // Mermiyi tam Toryum'un karşısına (X=0, Y=2cm) hizalıyoruz
-  fParticleGun->SetParticlePosition(G4ThreeVector(0.0*cm, 2.0*cm, -15.0*cm));
   
-  // Z ekseninde dümdüz ileri ateşle
+  fParticleGun->SetParticlePosition(G4ThreeVector(0.0*cm, 2.0*cm, -15.0*cm));
+
+  
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 0., 1.)); 
 
-  // Enerjiyi 1 GeV yap (Parçalanma - Spallation için gereken güç)
+ 
   fParticleGun->SetParticleEnergy(1. * GeV);
 }
 

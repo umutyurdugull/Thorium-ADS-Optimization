@@ -7,13 +7,6 @@
 namespace B1
 {
 
-ActionInitialization::ActionInitialization()
- : G4VUserActionInitialization()
-{}
-
-ActionInitialization::~ActionInitialization()
-{}
-
 void ActionInitialization::BuildForMaster() const
 {
   SetUserAction(new RunAction);
@@ -22,15 +15,21 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
   SetUserAction(new PrimaryGeneratorAction);
-  SetUserAction(new RunAction);
-  SetUserAction(new EventAction);
-  SetUserAction(new SteppingAction);
+
+  auto runAction = new RunAction;
+  SetUserAction(runAction);
+
+  auto eventAction = new EventAction(runAction);
+  SetUserAction(eventAction);
+
+  SetUserAction(new SteppingAction(eventAction));
 }
 
 }
 
 /* NOTES:
-1. BuildForMaster() is called only once by the master thread to handle global logging.
-2. Build() is called for each worker thread to initialize local user actions.
-3. User actions like PrimaryGeneratorAction are instantiated per-thread to ensure thread safety.
+1. Removed empty constructor/destructor definitions because they are already handled by '= default' in the header.
+2. EventAction now correctly receives a pointer to RunAction as required by its constructor.
+3. SteppingAction now correctly receives a pointer to EventAction to track step-level data during events.
+4. This structure ensures thread-safety by creating local instances of actions for each worker thread.
 */

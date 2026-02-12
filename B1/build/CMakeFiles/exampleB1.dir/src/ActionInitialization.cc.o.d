@@ -3,10 +3,10 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: \
  /usr/include/stdc-predef.h \
  /mnt/c/Users/PC/Desktop/Toryum/B1/include/ActionInitialization.hh \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4VUserActionInitialization.hh \
- /mnt/c/Users/PC/Desktop/Toryum/B1/include/EventAction.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4UserEventAction.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/globals.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4ios.hh \
+ /mnt/c/Users/PC/Desktop/Toryum/B1/include/PrimaryGeneratorAction.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
+ /mnt/c/Users/PC/Desktop/Toryum/B1/include/RunAction.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4UserRunAction.hh \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4Types.hh \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4GlobalConfig.hh \
  /usr/include/c++/13/complex \
@@ -183,6 +183,12 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: \
  /usr/include/c++/13/bits/istream.tcc \
  /usr/include/c++/13/bits/sstream.tcc \
  /home/umut/geant4-v11.3.0-install/include/Geant4/tls.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4Accumulable.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4AccValue.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4VAccumulable.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4AccType.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/globals.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4ios.hh \
  /usr/include/c++/13/iostream /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
@@ -228,17 +234,7 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/bits/std_mutex.h \
- /usr/include/c++/13/bits/unique_lock.h \
- /mnt/c/Users/PC/Desktop/Toryum/B1/include/PrimaryGeneratorAction.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4VUserPrimaryGeneratorAction.hh \
- /mnt/c/Users/PC/Desktop/Toryum/B1/include/RunAction.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4UserRunAction.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4Accumulable.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4AccValue.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4VAccumulable.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/G4AccType.hh \
- /home/umut/geant4-v11.3.0-install/include/Geant4/globals.hh \
- /usr/include/c++/13/bitset \
+ /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/bitset \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4MergeMode.hh \
  /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
@@ -254,5 +250,8 @@ CMakeFiles/exampleB1.dir/src/ActionInitialization.cc.o: \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4VAccumulable.icc \
  /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4AccValue.icc \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/globals.hh \
+ /mnt/c/Users/PC/Desktop/Toryum/B1/include/EventAction.hh \
+ /home/umut/geant4-v11.3.0-install/include/Geant4/G4UserEventAction.hh \
  /mnt/c/Users/PC/Desktop/Toryum/B1/include/SteppingAction.hh \
  /home/umut/geant4-v11.3.0-install/include/Geant4/G4UserSteppingAction.hh
