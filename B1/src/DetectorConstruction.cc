@@ -1,5 +1,4 @@
 #include "DetectorConstruction.hh"
-
 #include "G4Isotope.hh"
 #include "G4Element.hh"
 #include "G4Material.hh"
@@ -17,11 +16,10 @@ namespace B1
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
   G4NistManager* nist = G4NistManager::Instance();
+  G4bool checkOverlaps = true;
 
   G4double env_sizeXY = 200 * cm, env_sizeZ = 300 * cm;
   G4Material* env_mat = nist->FindOrBuildMaterial("G4_WATER");
-
-  G4bool checkOverlaps = true;
 
   G4double world_sizeXY = 1.2 * env_sizeXY;
   G4double world_sizeZ = 1.2 * env_sizeZ;
@@ -45,7 +43,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Material* Th_Mat = new G4Material("ThoriumMetal", density= 11.7*g/cm3, ncomponents=1);
   Th_Mat->AddElement(el_Th, natoms=1);
   G4Material* shape1_mat = Th_Mat;
-
   G4Material* refl_mat = nist->FindOrBuildMaterial("G4_GRAPHITE");
 
   G4ThreeVector pos1 = G4ThreeVector(0, 0, -60 * cm);
@@ -82,15 +79,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 }
 
-/*
-
-Hazırlayan : Umut YURDUGÜL
-
-Bu kodda "Büyük Blok" konfigürasyonuna ek olarak bir "Nötron Reflektörü" (Yansıtıcı) deneyi kurgulanmıştır. 
-1. Materyal: Nötronları yansıtma kapasitesi yüksek olan Grafit (G4_GRAPHITE) sisteme dahil edilmiştir.
-2. Hiyerarşi (Daughter-Mother): Toryum bloğu (Shape1) artık doğrudan 'logicEnv' içine değil, 'logicRefl' (Yansıtıcı) içine yerleştirilmiştir. 
-   Bu sayede Toryum'dan kaçmaya çalışan nötronlar önce Grafit tabakasına çarpar.
-3. Pozisyonlama: Reflektör 'pos1' (-60 cm) konumuna yerleştirilmiş, Toryum bloğu ise reflektörün tam merkezine (0,0,0) konumlandırılmıştır.
-4. Beklenen Sonuç: Bu yapı ile kaçak nötronların sisteme geri dönmesi sağlanarak, önceki deneyde elde edilen Th-233 breeding (yakıt üretim) oranının 
-   ve nötron ekonomisinin (Notron_Verimi_Proton_Basina) artırılması hedeflenmektedir.
+/* NOTES:
+1. Construct() defines the geometry, materials, and placement of simulation components.
+2. Thorium-232 is defined manually using G4Isotope and G4Element for precise breeding simulation.
+3. The reflector (G4_GRAPHITE) acts as a mother volume for the Thorium target (Shape1).
+4. fScoringVolume is assigned to the Thorium target to record energy deposition and breeding events.
 */
