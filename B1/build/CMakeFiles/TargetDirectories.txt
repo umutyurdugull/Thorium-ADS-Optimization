@@ -1,0 +1,3 @@
+/mnt/c/Users/PC/Desktop/Toryum/B1/build/CMakeFiles/exampleB1.dir
+/mnt/c/Users/PC/Desktop/Toryum/B1/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/PC/Desktop/Toryum/B1/build/CMakeFiles/rebuild_cache.dir
