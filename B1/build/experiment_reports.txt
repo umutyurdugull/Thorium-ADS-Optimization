@@ -73,3 +73,26 @@ Dose Ratio (vs B1-002): ~1/82
   cross-section at 10 MeV allows for a higher percentage of energy to be retained
   within the scoring volum compared to 1 GeV photons.
 - Compton scattering is the primary interaction mechanism at this energy level.
+
+
+================================================================================
+I have an idea. 
+
+PROPOSAL: MATERIAL SUBSTITUTION STUDY (WATER TO LEAD)
+--------------------------------------------------------------------------------
+GOAL:
+Evulate the shielding effectiveness and energy deposition of lead(G4_Pb) compared to the baseline water-equivalent material.
+
+HYPOTHESIS:
+Substituting the scoring volume (Shape2) material with Lead will result in a 
+massive increase in Absorbed Dose ($D_{abs}$) for 10 MeV Gammas. This is due 
+to the high atomic number ($Z=82$) and density of Lead, which increases the 
+probability of photon absorption via the Photoelectric effect and Pair Production.
+
+PROCEDURE:
+
+1. Modify B1DetectorConstruction.cc to define Lead (G4_Pb).
+2. Assign G4_Pb to the 'shape2 logical volume.
+3. Recompile using 'make'
+4. Run 10 MeV Gamma Simulation.
+================================================================================
