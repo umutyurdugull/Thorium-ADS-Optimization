@@ -50,3 +50,26 @@ Comparison with B1-001 (Proton): ~2.16x Higher Dose
 - Gamma rays deposited significantly more energy in the scoring volume compared to protons at the same energy (1 GeV).
 - Likely caused by electromagnetic showers (Pair Production) depositing energy locally, whereas high-energy protons might be punching through the target with lower Linear Energy Transfer (LET).
 ================================================================================
+EXPERIMENT ID: B1-003
+DATE: 2026-02-13
+AUTHOR: Umut YURDUGÜL
+--------------------------------------------------------------------------------
+[CONFIGURATION]
+Simulation Framework: Geant4-11-03 [MT]
+Physics List: FTFP_BERT
+Macro File: run_lowE.mac
+Particle: Gamma (Photon)
+Energy: 10 MeV (Medical/Therapeutic Range)
+Number of Events: 10,000
+
+[RESULTS]
+Absorbed Dose: 1.84461 picoGy
+RMS (Error Margin): 0.015234 picoGy
+Energy Ratio (vs B1-002): 1/100
+Dose Ratio (vs B1-002): ~1/82
+[OBSERVATIONS]
+- Lower energy gammas show higher relative deposition efficiency.
+- While the total does is lower due to reduced source energy, the interaction
+  cross-section at 10 MeV allows for a higher percentage of energy to be retained
+  within the scoring volum compared to 1 GeV photons.
+- Compton scattering is the primary interaction mechanism at this energy level.
