@@ -29,3 +29,24 @@ Macro File: run1.mac
 - [cite_start]Hadronic processes (Elastic, Inelastic, etc.) were active for protons. [cite: 115, 116]
 - [cite_start]EM Physics parameters: Min kinetic energy 100 eV, Max 100 TeV. [cite: 14]
 ================================================================================
+EXPERIMENT ID: B1-002
+DATE: 2026-02-13
+AUTHOR: Umut YURDUGÜL
+--------------------------------------------------------------------------------
+[CONFIGURATION]
+Simulation Framework: Geant4-11-03 [MT]
+Physics List: FTFP_BERT
+Macro File: run_gamma.mac (Copied from run1.mac)
+Particle: Gamma (Photon)
+Energy: 1 GeV
+Number of Events: 10,000
+
+[RESULTS]
+Absorbed Dose: 150.668 picoGy
+RMS (Error Margin): 0.285318 picoGy
+Comparison with B1-001 (Proton): ~2.16x Higher Dose
+
+[OBSERVATIONS]
+- Gamma rays deposited significantly more energy in the scoring volume compared to protons at the same energy (1 GeV).
+- Likely caused by electromagnetic showers (Pair Production) depositing energy locally, whereas high-energy protons might be punching through the target with lower Linear Energy Transfer (LET).
+================================================================================
