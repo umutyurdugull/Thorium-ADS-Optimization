@@ -1,0 +1,31 @@
+================================================================================
+EXPERIMENT ID: B1-001
+DATE: 2026-02-13
+AUTHOR: Umut YURDUGÜL
+--------------------------------------------------------------------------------
+[CONFIGURATION]
+[cite_start]Simulation Framework: Geant4-11-03 [MT] (Multi-threaded) [cite: 1]
+[cite_start]Physics List: FTFP_BERT [cite: 2]
+Macro File: run1.mac
+[cite_start]Particle: Proton (inferred from "Hadronic Processes for proton" sections) [cite: 115]
+[cite_start]Energy: 1 GeV [cite: 126, 127]
+[cite_start]Number of Events: 10,000 [cite: 139]
+[cite_start]Threads Used: 12 Worker Threads (G4WT0 to G4WT11) [cite: 125, 126]
+
+[RESULTS]
+[cite_start]Total Energy Deposited: 3.61322 TeV (5.78902e-07 joule) [cite: 139]
+[cite_start]Scoring Volume Mass: 8300.87 kg [cite: 139]
+[cite_start]Absorbed Dose: 69.7398 picoGy [cite: 139]
+[cite_start]RMS (Error Margin): 1.12352 picoGy [cite: 139]
+
+[EXECUTION METRICS]
+- The run was split across multiple worker threads (G4WT0 - G4WT11).
+- [cite_start]Example Thread Performance (G4WT6): Processed 924 events, calculated 6.47 picoGy. [cite: 126]
+- [cite_start]Example Thread Performance (G4WT4): Processed 1008 events, calculated 6.73 picoGy. [cite: 134]
+
+[OBSERVATIONS]
+- Successful execution in Multi-threaded mode.
+- Dataset validation successful (G4PARTICLEXS and G4EMLOW loaded correctly).
+- [cite_start]Hadronic processes (Elastic, Inelastic, etc.) were active for protons. [cite: 115, 116]
+- [cite_start]EM Physics parameters: Min kinetic energy 100 eV, Max 100 TeV. [cite: 14]
+================================================================================
