@@ -1,0 +1,33 @@
+/control/verbose 0
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+/run/initialize
+
+
+
+
+/gun/particle gamma
+
+
+/gun/energy 10 MeV
+
+
+
+/gun/position 0.0 0.0 80.0 cm
+
+
+
+/gun/direction 0.0 0.0 -1.0
+
+
+# /gun/random false  # Set to true for isotropic emission
+
+
+
+
+
+/run/printProgress 1000
+
+
+/run/beamOn 10000

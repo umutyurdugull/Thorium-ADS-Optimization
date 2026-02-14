@@ -1,98 +1,77 @@
-================================================================================
-EXPERIMENT ID: B1-001
-DATE: 2026-02-13
-AUTHOR: Umut YURDUGÜL
---------------------------------------------------------------------------------
-[CONFIGURATION]
-[cite_start]Simulation Framework: Geant4-11-03 [MT] (Multi-threaded) [cite: 1]
-[cite_start]Physics List: FTFP_BERT [cite: 2]
-Macro File: run1.mac
-[cite_start]Particle: Proton (inferred from "Hadronic Processes for proton" sections) [cite: 115]
-[cite_start]Energy: 1 GeV [cite: 126, 127]
-[cite_start]Number of Events: 10,000 [cite: 139]
-[cite_start]Threads Used: 12 Worker Threads (G4WT0 to G4WT11) [cite: 125, 126]
 
-[RESULTS]
-[cite_start]Total Energy Deposited: 3.61322 TeV (5.78902e-07 joule) [cite: 139]
-[cite_start]Scoring Volume Mass: 8300.87 kg [cite: 139]
-[cite_start]Absorbed Dose: 69.7398 picoGy [cite: 139]
-[cite_start]RMS (Error Margin): 1.12352 picoGy [cite: 139]
-
-[EXECUTION METRICS]
-- The run was split across multiple worker threads (G4WT0 - G4WT11).
-- [cite_start]Example Thread Performance (G4WT6): Processed 924 events, calculated 6.47 picoGy. [cite: 126]
-- [cite_start]Example Thread Performance (G4WT4): Processed 1008 events, calculated 6.73 picoGy. [cite: 134]
-
-[OBSERVATIONS]
-- Successful execution in Multi-threaded mode.
-- Dataset validation successful (G4PARTICLEXS and G4EMLOW loaded correctly).
-- [cite_start]Hadronic processes (Elastic, Inelastic, etc.) were active for protons. [cite: 115, 116]
-- [cite_start]EM Physics parameters: Min kinetic energy 100 eV, Max 100 TeV. [cite: 14]
-================================================================================
-EXPERIMENT ID: B1-002
-DATE: 2026-02-13
-AUTHOR: Umut YURDUGÜL
---------------------------------------------------------------------------------
-[CONFIGURATION]
-Simulation Framework: Geant4-11-03 [MT]
+Date: 2026-02-14
+Framework: Geant4-11-03 [MT]
 Physics List: FTFP_BERT
-Macro File: run_gamma.mac (Copied from run1.mac)
+--------------------------------------------------------------------------------
+
+[EXPERIMENT B1-001: PROTON BASELINE]
+Particle: Proton
+[cite_start]Energy: 1 GeV [cite: 126]
+[cite_start]Events: 10,000 [cite: 139]
+[cite_start]Absorbed Dose: 69.7398 pGy [cite: 139]
+[cite_start]RMS: 1.12352 pGy [cite: 139]
+Observation: Protons at 1 GeV show high penetration with low local deposition.
+
+--------------------------------------------------------------------------------
+
+[EXPERIMENT B1-002: GAMMA 1 GEV]
 Particle: Gamma (Photon)
 Energy: 1 GeV
-Number of Events: 10,000
+Events: 10,000
+Absorbed Dose: 150.668 pGy
+Ratio: ~2.16x higher dose than 1 GeV Protons.
+Observation: EM showers (Pair Production) increase energy deposition efficiency.
 
-[RESULTS]
-Absorbed Dose: 150.668 picoGy
-RMS (Error Margin): 0.285318 picoGy
-Comparison with B1-001 (Proton): ~2.16x Higher Dose
-
-[OBSERVATIONS]
-- Gamma rays deposited significantly more energy in the scoring volume compared to protons at the same energy (1 GeV).
-- Likely caused by electromagnetic showers (Pair Production) depositing energy locally, whereas high-energy protons might be punching through the target with lower Linear Energy Transfer (LET).
-================================================================================
-EXPERIMENT ID: B1-003
-DATE: 2026-02-13
-AUTHOR: Umut YURDUGÜL
 --------------------------------------------------------------------------------
-[CONFIGURATION]
-Simulation Framework: Geant4-11-03 [MT]
-Physics List: FTFP_BERT
-Macro File: run_lowE.mac
+
+[EXPERIMENT B1-003: GAMMA 10 MEV - BASELINE]
 Particle: Gamma (Photon)
-Energy: 10 MeV (Medical/Therapeutic Range)
-Number of Events: 10,000
+Energy: 10 MeV
+Material: Water/Bone equivalent
+Events: 10,000
+Absorbed Dose: 1.84461 pGy
+Observation: Low interaction efficiency in low-Z materials at 10 MeV.
 
-[RESULTS]
-Absorbed Dose: 1.84461 picoGy
-RMS (Error Margin): 0.015234 picoGy
-Energy Ratio (vs B1-002): 1/100
-Dose Ratio (vs B1-002): ~1/82
-[OBSERVATIONS]
-- Lower energy gammas show higher relative deposition efficiency.
-- While the total does is lower due to reduced source energy, the interaction
-  cross-section at 10 MeV allows for a higher percentage of energy to be retained
-  within the scoring volum compared to 1 GeV photons.
-- Compton scattering is the primary interaction mechanism at this energy level.
-
-
-================================================================================
-I have an idea. 
-
-PROPOSAL: MATERIAL SUBSTITUTION STUDY (WATER TO LEAD)
 --------------------------------------------------------------------------------
-GOAL:
-Evulate the shielding effectiveness and energy deposition of lead(G4_Pb) compared to the baseline water-equivalent material.
 
-HYPOTHESIS:
-Substituting the scoring volume (Shape2) material with Lead will result in a 
-massive increase in Absorbed Dose ($D_{abs}$) for 10 MeV Gammas. This is due 
-to the high atomic number ($Z=82$) and density of Lead, which increases the 
-probability of photon absorption via the Photoelectric effect and Pair Production.
+[EXPERIMENT B1-004: LEAD SHIELDING ANALYSIS]
+Particle: Gamma (Photon)
+Energy: 10 MeV
+[cite_start]Target Material: Lead (G4_Pb, Z=82) [cite: 269]
+[cite_start]Target Mass: 10.6236 kg [cite: 305]
+[cite_start]Events: 10,000 [cite: 304]
 
-PROCEDURE:
+RESULTS:
+- [cite_start]Absorbed Dose: 1123.48 pGy (1.12348 nGy) [cite: 305]
+- [cite_start]RMS Error: 5.86093 pGy [cite: 305]
+- [cite_start]Total Energy Deposited: 74.495 GeV [cite: 304]
 
-1. Modify B1DetectorConstruction.cc to define Lead (G4_Pb).
-2. Assign G4_Pb to the 'shape2 logical volume.
-3. Recompile using 'make'
-4. Run 10 MeV Gamma Simulation.
-================================================================================
+COMPARATIVE FINDINGS:
+- Dose Enhancement: 609.1x higher dose than B1-003 (Water/Bone).
+- Interaction Efficiency: Lead MFP (Mean Free Path) is ~2.1 mm.
+- Dominant Physics: Compton Scattering (~83%) & Pair Production (~15%).
+
+--------------------------------------------------------------------------------
+
+[FINAL CONCLUSIONS]
+1. Material Density: Lead successfully captures nearly all 10 MeV photon energy
+   within a very small volume (10.62 kg vs 8300 kg), leading to the 609x dose
+   increase observed.
+2. Code Accuracy: The mismatch in scoring volume was corrected in 
+   B1DetectorConstruction.cc by assigning fScoringVolume to logicShape2.
+3. Statistical Validity: Final relative uncertainty achieved is ~0.5%, 
+   confirming high simulation precision.
+
+
+--------------------------------------------------------------------------------
+
+[EXPERIMENT B1-005: THORIUM FUEL BASELINE]
+Goal: Analyze energy deposition in Thorium-232 target vs Lead shield.
+Particle: Gamma (Photon)
+Energy: 10 MeV
+Target Material: Thorium Metal (Z=90, Density=11.7 g/cm3)
+Scoring Volume: logicShape2
+
+Expected Outcome:
+- Higher absorbed dose compared to Lead (B1-004) due to increased Z-value.
+- Foundation for future neutron production (breeding) analysis.

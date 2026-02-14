@@ -64,7 +64,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   auto logicShape1 = new G4LogicalVolume(solidShape1, shape1_mat, "Shape1");
   new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicShape1, "Shape1", logicRefl, false, 0, checkOverlaps);
 
-  G4Material* shape2_mat = nist->FindOrBuildMaterial("G4_BONE_COMPACT_ICRU");
+  G4Material* shape2_mat = nist->FindOrBuildMaterial("G4_Pb");
+
   G4double shape2_dxa = 12 * cm, shape2_dxb = 12 * cm;
   G4double shape2_dya = 10 * cm, shape2_dyb = 16 * cm;
   G4double shape2_dz = 6 * cm;
@@ -72,7 +73,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   auto logicShape2 = new G4LogicalVolume(solidShape2, shape2_mat, "Shape2");
   new G4PVPlacement(nullptr, pos2, logicShape2, "Shape2", logicEnv, false, 0, checkOverlaps);
 
-  fScoringVolume = logicShape1;
+  fScoringVolume = logicShape2;
 
   return physWorld;
 }
